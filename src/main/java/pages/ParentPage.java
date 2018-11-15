@@ -1,10 +1,8 @@
 package pages;
 
-import libs.ActionsWithOurElements;
-import org.apache.log4j.Logger;
-import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+        import libs.ActionsWithOurElements;
+        import org.apache.log4j.Logger;
+        import org.openqa.selenium.WebDriver;
 
 
 public class ParentPage {

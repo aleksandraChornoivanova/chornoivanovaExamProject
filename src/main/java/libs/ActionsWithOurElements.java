@@ -20,8 +20,21 @@ public class ActionsWithOurElements {
             webElement.sendKeys(text);
             logger.info(text + " was inputted into element");
         }catch (Exception e){
-            logger.error("Cannot work with element");
-            Assert.fail("Cannot work with element");
+            printErrorStopTest();
         }
+    }
+
+    public void clickOnElement (WebElement webElement){
+        try{
+            webElement.click();
+            logger.info("Element was clicked");
+        }catch (Exception e){
+            printErrorStopTest();
+        }
+    }
+
+    private void printErrorStopTest() {
+        logger.error("Cannot work with element");
+        Assert.fail("Cannot work with element");
     }
 }

@@ -1,27 +1,15 @@
 package pages;
 
 import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends ParentPage{
-    @FindBy (xpath = ".//*[@class=\"wizard-page sign-in\"]//input[@id=\"email\"]")
-    private WebElement inputLogIn;
-
-    @FindBy (xpath = ".//*[@class=\"wizard-page sign-in\"]//input[@type=\"password\"]")
-    private WebElement inputPassword;
-
-    @FindBy (xpath = ".//button[@onclick=\"SignupService.Signin();\"]")
-    private WebElement clickSignIn;
-
-    @FindBy (xpath = ".//*[@class=\"wizard-page sign-in\"]//button[@id=\"btnContinue\"]")
-    private WebElement clickContinue;
+public class HomePage_Sample_WithoutFindBy extends ParentPage{
 
 
-    public HomePage(WebDriver webDriver) {
+    public HomePage_Sample_WithoutFindBy(WebDriver webDriver) {
         super(webDriver);
     }
 
@@ -36,17 +24,21 @@ public class HomePage extends ParentPage{
     }
 
     public void enterLogIn (String login){
+        WebElement inputLogIn = webDriver.findElement(By.xpath(".//*[@class=\"wizard-page sign-in\"]//input[@id=\"email\"]"));
         actionsWithOurElements.enterTextIntoElement(inputLogIn, login);
     }
 
     public void enterPassword (String password){
-       actionsWithOurElements.enterTextIntoElement(inputPassword, password);
+        WebElement inputPassword = webDriver.findElement(By.xpath(".//*[@class=\"wizard-page sign-in\"]//input[@type=\"password\"]"));
+        actionsWithOurElements.enterTextIntoElement(inputPassword, password);
     }
 
     public void clickSignInButton (){
-       actionsWithOurElements.clickOnElement(clickSignIn);
+        WebElement clickSignIn = webDriver.findElement(By.xpath(".//button[@onclick=\"SignupService.Signin();\"]"));
+        actionsWithOurElements.clickOnElement(clickSignIn);
     }
     public void clickContinueButton (){
+        WebElement clickContinue = webDriver.findElement(By.xpath(".//*[@class=\"wizard-page sign-in\"]//button[@id=\"btnContinue\"]"));
         actionsWithOurElements.clickOnElement(clickContinue);
     }
 }
