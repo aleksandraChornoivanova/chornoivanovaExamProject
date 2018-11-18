@@ -20,6 +20,12 @@ public class HomePage extends ParentPage{
     @FindBy (xpath = ".//*[@class=\"wizard-page sign-in\"]//button[@id=\"btnContinue\"]")
     private WebElement clickContinue;
 
+    @FindBy (xpath = ".//a[@class=\"menu__item menu__item--favorites\"]")
+    private WebElement favourites;
+
+    @FindBy (xpath = ".//button[@class=\"user\"]")
+    private WebElement userMenu;
+
 
     public HomePage(WebDriver webDriver) {
         super(webDriver);
@@ -48,6 +54,21 @@ public class HomePage extends ParentPage{
     }
     public void clickContinueButton (){
         actionsWithOurElements.clickOnElement(clickContinue);
+    }
+
+    public boolean isFavouritesPresent (){
+        return actionsWithOurElements.isElementPresent (favourites);
+    }
+    public  boolean isUserMenuPresent (){
+        return actionsWithOurElements.isElementPresent(userMenu);
+    }
+
+    public void userSignIn(String login, String password) {
+        openPage();
+        clickSignInButton();
+        enterLogIn(login);
+        enterPassword(password);
+        clickContinueButton();
     }
 }
 
