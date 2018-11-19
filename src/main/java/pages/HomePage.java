@@ -26,9 +26,15 @@ public class HomePage extends ParentPage{
     @FindBy (xpath = ".//button[@class=\"user\"]")
     private WebElement userMenu;
 
+    @FindBy (xpath = ".//div[@class=\"dropdown user-menu open\"]//a[@href=\"/Account\"]")
+    public WebElement yourProfileLink;
+
+    @FindBy (xpath = ".//button[@id=\"agreeCookiesBtn\"]")
+    protected WebElement clickAgreeCookies;
+
 
     public HomePage(WebDriver webDriver) {
-        super(webDriver);
+        super(webDriver, "/");
     }
 
     public void openPage () {
@@ -65,11 +71,31 @@ public class HomePage extends ParentPage{
 
     public void userSignIn(String login, String password) {
         openPage();
+        clickAgreeCookiesButton();
         clickSignInButton();
         enterLogIn(login);
         enterPassword(password);
         clickContinueButton();
     }
+
+    public void checkFavouritesIsPresent() {
+        Assert.assertTrue("Favourites tab is not present", isFavouritesPresent());
+    }
+
+    public void checkUserMenuIsPresent() {
+        Assert.assertTrue("User menu is not present", isUserMenuPresent());
+    }
+
+    public void clickUserMenu(){
+        actionsWithOurElements.clickOnElement(userMenu);
+    }
+    public void clickYourProfileLink(){
+        actionsWithOurElements.clickOnElement(yourProfileLink);
+    }
+    public void clickAgreeCookiesButton (){
+        actionsWithOurElements.clickOnElement(clickAgreeCookies);
+    }
 }
+
 
 
