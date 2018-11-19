@@ -7,6 +7,7 @@ public class SignInTestWithPageObject extends ParentTest {
     @Test
     public void validSignIn() {
         homePage.openPage();
+        homePage.clickAgreeCookiesButton();
         homePage.clickSignInButton();
         homePage.enterLogIn("ac@nustay.com");
         homePage.enterPassword("111111");

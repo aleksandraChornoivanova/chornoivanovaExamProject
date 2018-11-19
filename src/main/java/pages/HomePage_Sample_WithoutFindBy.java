@@ -10,7 +10,7 @@ public class HomePage_Sample_WithoutFindBy extends ParentPage{
 
 
     public HomePage_Sample_WithoutFindBy(WebDriver webDriver) {
-        super(webDriver);
+        super(webDriver, "/");
     }
 
     public void openPage () {
